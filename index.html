@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>my-app</title>
+</head>
+<body style="background-color:bisque; margin: 3em 15em;">
+  <div class="container">
+    <h1 id="header" style="color: brown;">User Profile</h1>
+    <img src="https://www.superprof.co.uk/img-fb-2425650-20181210044843.jpg" alt="profile-face" width="250px">
+    <hr>
+    Name: <h3 id="name">Anna Smith</h3>
+    <hr>
+    Email: <h3 id="email">anna.smith@example.com</h3>
+    <hr>
+    Interests: <h3 id="interests">coding</h3>
+    <hr>
+    <button class="button" onclick="editProfile()" style="color: blue;">Edit Profile</button>
+  </div>
+  <div class="container-edit">
+    <h1 id="header" style="color: brown">User Profile</h1>
+    <img src="https://i.pinimg.com/originals/21/a3/ed/21a3edd4dbfa50068e78a7f1923bb6e1.jpg" alt="profile-face" width="250px">
+    <hr>
+    Name: <input type="text" id="input-name"/>
+    <hr>
+    Email: <input type="email" id="input-email"/>
+    <hr>
+    Interests: <input type="text" id="input-interests"/>
+    <hr>
+    <button class="button" onclick="saveProfile()" style="color: blue;" >Save Profile</button>
+  </div>
+
+  <script>
+    function editProfile() {
+      document.querySelector('.container').style.display = 'none'
+      document.querySelector('.container.edit').style.display = 'block'
+
+      const name = document.querySelector('#name').textContent
+      document.querySelector('#input-name').value = name
+
+      const email = document.querySelector('#email').textContent
+      document.querySelector('#input-email').value = email
+
+      const interests = document.querySelector('#interests').textContent
+      document.querySelector('#input-interests').value = interests
+    }
+
+    function saveProfile() {
+      document.querySelector('#name').textContent = document.querySelector('#input-name').value
+      document.querySelector('#email').textContent = document.querySelector('#input-email').value
+      document.querySelector('#interests').textContent = document.querySelector('#input-interests').value
+
+      document.querySelector('.container').style.display = 'block'
+      document.querySelector('.container-edit').style.display = 'none'
+    }
+
+  </script>
+  
+</body>
+</html>
