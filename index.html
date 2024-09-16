@@ -3,12 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>my-app</title>
+  <title>app.test</title>
+  <link rel="icon" href="data:,">
+  <style>
+        body {
+        margin: 5rem;
+        background-image: url(https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+        background-size: cover;
+    }
+    .container .container-edit {
+        margin: 40px auto;
+        width: 250px;
+        height: 250px;
+    }
+    .button {
+          margin-top: 1rem;
+          border-radius: 10px;
+          display: inline-block;
+          padding: .8rem 3rem;
+          font-size: 1.2rem;
+          color: #fff;
+          background-color: blue;
+          cursor: pointer;
+        }
+    .button:hover {
+          letter-spacing: .2rem;
+          color: black;
+        }
+    img {
+        display: block;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+    hr {
+        width: 400px;
+        margin-left: 0px;
+    }
+    h3 {
+        display: inline-block;
+    }
+    #container {
+        display: none;
+    }
+    #container-edit {
+        display: none;
+    }
+    #container-edit input {
+        height: 32px;
+    }
+    #container-edit hr {
+        margin: 25px 0;
+    }
+    #container-edit input {
+        width: 195px;
+        font-size: 15px;
+    }
+  </style>
 </head>
-<body style="background-color:bisque; margin: 3em 15em;">
+<body>
   <div class="container">
-    <h1 id="header" style="color: brown;">User Profile</h1>
-    <img src="https://www.superprof.co.uk/img-fb-2425650-20181210044843.jpg" alt="profile-face" width="250px">
+    <h1 id="header">User Profile</h1>
+    <img src="https://www.superprof.co.uk/img-fb-2425650-20181210044843.jpg" alt="profile-face" height="230px" width="290px">
     <hr>
     Name: <h3 id="name">Anna Smith</h3>
     <hr>
@@ -16,11 +71,11 @@
     <hr>
     Interests: <h3 id="interests">coding</h3>
     <hr>
-    <button class="button" onclick="editProfile()" style="color: blue;">Edit Profile</button>
+    <button class="button" onclick="editProfile()">Edit Profile</button>
   </div>
   <div class="container-edit">
-    <h1 id="header" style="color: brown">User Profile</h1>
-    <img src="https://i.pinimg.com/originals/21/a3/ed/21a3edd4dbfa50068e78a7f1923bb6e1.jpg" alt="profile-face" width="250px">
+    <h1 id="header">User Profile</h1>
+    <img src="https://i.pinimg.com/originals/21/a3/ed/21a3edd4dbfa50068e78a7f1923bb6e1.jpg" alt="profile-face" height="200px" width="290px">
     <hr>
     Name: <input type="text" id="input-name"/>
     <hr>
@@ -28,13 +83,13 @@
     <hr>
     Interests: <input type="text" id="input-interests"/>
     <hr>
-    <button class="button" onclick="saveProfile()" style="color: blue;" >Save Profile</button>
+    <button class="button" onclick="saveProfile()">Save Profile</button>
   </div>
 
   <script>
     function editProfile() {
       document.querySelector('.container').style.display = 'none'
-      document.querySelector('.container.edit').style.display = 'block'
+      document.querySelector('.container-edit').style.display = 'block'
 
       const name = document.querySelector('#name').textContent
       document.querySelector('#input-name').value = name
