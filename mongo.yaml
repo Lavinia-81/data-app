@@ -1,0 +1,20 @@
+services:
+  app.test:
+    image: 211125585745.dkr.ecr.us-west-1.amazonaws.com/app.test
+    ports:
+     - 3000:3000
+  mongodb:
+    image: mongo
+    ports:
+     - 27017:27017
+    environment:
+     - MONGO_INITDB_ROOT_USERNAME=admin
+     - MONGO_INITDB_ROOT_PASSWORD=password
+  mongodb-express:
+    image: mongo-express
+    ports:
+     - 8081:8081
+    environment:
+     - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+     - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+     - ME_CONFIG_MONGODB_SERVER=mongodb

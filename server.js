@@ -8,7 +8,6 @@ var app = express();
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
@@ -23,7 +22,6 @@ app.get('/get-profile', function (req, res) {
 
     var db = client.db('user-account');
     var query = { userid: 1 };
-
     db.collection('users').findOne(query, function (err, result) {
       if (err) throw err;
       client.close();
@@ -36,6 +34,8 @@ app.post('/update-profile', function (req, res) {
     var userObj = req.body;
     var response =res;
 
+  console.log('connecting to the db...');
+
   MongoClient.connect('mongodb://admin:password@localhost:27017', function (err, client) {
       if (err) throw err;
 
@@ -43,6 +43,8 @@ app.post('/update-profile', function (req, res) {
     userObj ['userid'] = 1
     var query = { userid: 1 };
     var newValues = { $set: userObj };
+
+    console.log('successfully connected to the user-admin db');
 
     db.collection('users').updateOne(query, newValues, {upsert: true}, function (err, res) {
        if (err) throw err;
