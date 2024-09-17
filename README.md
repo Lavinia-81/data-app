@@ -11,3 +11,4 @@ I use JavaScript for the front-end and Node.js for the back-end, which is connec
 4. Configure the next steps: This can be done using Jenkins or other scripts and tools.
 5. Deploy the Docker images: The Docker images need to be deployed on a development server. This server pulls images from the private repository, including the JavaScript application image and the MongoDB image.
 6. Run the containers: There will be two containers running on the development server—one for the private container and one for the public development container. These containers communicate with each other to run the application.
+
