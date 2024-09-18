@@ -1,6 +1,6 @@
 services:
   app.test:
-    image:
+    image: 211125585745.dkr.ecr.us-west-1.amazonaws.com/app.test:1.3
     ports:
      - 3000:3000
   mongodb:
