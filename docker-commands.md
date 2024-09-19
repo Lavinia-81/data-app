@@ -23,12 +23,9 @@ docker run -d \
 mongo-express
 
 ## start all three containers at once
-To launch the application, please use the following command:   
-'''   
+To launch the application, please use the following command:     
 docker-compose -f mongo.yaml up   
-'''   
 
-To stop the application, execute:   
-'''   
+To stop the application, execute:    
 docker-compose -f mongo.yaml down   
-'''   
+  
