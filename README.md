@@ -34,3 +34,15 @@ docker run -d
 --name mongo-express
 mongo-express
 ```
+
+### Create network and run docker-compose
+```
+# Create docker-network
+docker network create mongo-network
+
+# Start compose
+docker-compose -f mongo.yaml up
+
+# Stop compose
+docker-compose -f mongo.yaml down
+```
