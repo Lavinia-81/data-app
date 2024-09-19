@@ -13,14 +13,14 @@ I use JavaScript for the front-end and Node.js for the back-end, which is connec
 6. Run the containers: There will be two containers running on the development server—one for the private container and one for the public development container. These containers communicate with each other to run the application.
 
 To launch the application, please use the following command:   
-'''
+'''   
 docker-compose -f mongo.yaml up   
-'''
+'''   
 
 To stop the application, execute:   
-'''
+'''   
 docker-compose -f mongo.yaml down   
-'''
+'''   
 
 
 
