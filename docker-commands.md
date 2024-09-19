@@ -21,6 +21,14 @@ docker run -d \
 --net mongo-network \
 --name mongo-express \
 mongo-express
-## start all tree containers once
-docker-compose -f mongo.yaml up
-docker-compose -f mongo.yaml down
+
+## start all three containers at once
+To launch the application, please use the following command:   
+'''   
+docker-compose -f mongo.yaml up   
+'''   
+
+To stop the application, execute:   
+'''   
+docker-compose -f mongo.yaml down   
+'''   
