@@ -1,11 +1,8 @@
 # data-app   
-https://lavinia-81.github.io/data-app/   
-
-
-## Connecting a JavaScript application and Nodejs server to a Docker container with a MongoDB database.   
+https://lavinia-81.github.io/data-app/      
 
 ## Overview   
-This project demonstrates how to connect a JavaScript Front-End and a Nodejs server Back-End, running in a Docker container with a MongoDB database.   
+This project demonstrates how to connect a JavaScript Front-End and a Nodejs server Back-End, running in Docker with a MongoDB database.   
 
 ## Technologies Used   
 - **Front-end:** JavaScript   
@@ -72,7 +69,7 @@ This project demonstrates how to connect a JavaScript Front-End and a Nodejs ser
     docker push 12345678910.dkr.ecr.us-west-1.amazonaws.com/app.test:1.3
     ```
 
-8. ** Running the application with docker-compose and a yaml file: **
+8. ** Running the application with docker-compose and a yaml file **
     * There will be an image running for the private repository and two images running from a public one. Those images communicate with each other to run the application. *
    
     * Start compose: *
@@ -84,7 +81,19 @@ This project demonstrates how to connect a JavaScript Front-End and a Nodejs ser
     ```
     docker-compose -f mongo.yaml down
     ```
-
+    
+9. ** Using Docker Volumes to persist data between container **
+    *To avoid losing data each time the application stops, use Docker volumes: *
+    
+    * Start volumes: *
+    ```
+    docker-compose -f docker-compose.yaml up
+    ```
+    
+    * Stop volumes: *
+    ```
+    docker-compose -f docker-compose.yaml down
+    ```
 
 
 
