@@ -2,7 +2,7 @@
 https://lavinia-81.github.io/data-app/   
 
 
-## Connecting a JavaScript application and Nodejs server to a Docker container with a MongoDB database and starting development.   
+## Connecting a JavaScript application and Nodejs server to a Docker container with a MongoDB database.   
 
 ## Overview   
 This project demonstrates how to connect a JavaScript Front-End and a Nodejs server Back-End, running in a Docker container with a MongoDB database.   
