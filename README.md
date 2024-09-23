@@ -2,7 +2,7 @@
 https://lavinia-81.github.io/data-app/   
 
 
-Connecting a JavaScript application and Nodejs server to a Docker container with a MongoDB database and starting development.   
+## Connecting a JavaScript application and Nodejs server to a Docker container with a MongoDB database and starting development.   
 
 ## Overview   
 This project demonstrates how to connect a JavaScript Front-End and a Nodejs server Back-End, running in a Docker container with a MongoDB database.   
@@ -16,70 +16,79 @@ This project demonstrates how to connect a JavaScript Front-End and a Nodejs ser
 
 ## Steps to Set Up   
 
-1. **Build the JavaScript Application:**   
-   - Commit the JavaScript application to Git. This triggers a continuous integration process with Jenkins, which produces artifacts for the JavaScript application.   
+1. ** Build the JavaScript Application and Nodejs Server: **   
+    * Commit the JavaScript application and Nodejs Server to Git. *
+    * The application can run if using the following command on bash terminal: *
+     ```
+     node server.js
+     ```
+    * The application will be available on port 3000. *
 
-2. **Create a Docker Image:**   
-   - Jenkins will create a Docker image from the JavaScript artifacts.   
+ 2. ** Create a MongoDB Images: **   
+     * Creeate Mongo and Mongo-Express images by acces the folow commands: *
+     ```
+     docker pull mongo:4.4
+     ```
+     ```
+     docker pull mongo-express
+     ```
+ 3. ** Create a network to connect both Docker images: **
+     ```
+     docker network create mongo-network
+     ```
+ 4. ** Configurate MongoDB image: **
+    ```
+    docker run -d \
+      -p 27017:27017 \
+      -e MONGO_INITDB_ROOT_USERNAME=admin \
+      -e MONGO_INITDB_ROOT_PASSWORD=password \
+      --net mongo-network \
+      --name mongodb \
+      mongo:4.4
+    ```
 
-3. **Push the Docker Image:**   
-   - Once the image is created by the Jenkins build, it is pushed to a private repository in AWS.   
+5. ** Configurate Mongo-Express image: **
+    ```
+    docker run -d \
+      -p 8081:8081 \
+      -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
+      -e ME_CONFIG_MONGODB_ADMINPASSWORD=password \
+      -e ME_CONFIG_MONGODB_SERVER=mongodb \
+      --net mongo-network \
+      --name mongo-express \
+      mongo-express
+    ```
 
-4. **Configure the Next Steps:**   
-   - This can be done using Jenkins or other scripts and tools.   
+6. ** Bild a Image Enviroment Blueprint in Dockerfile: **   
+    * FROM node:18-alpine... *
+    * Bild an images based on Dockerfile: *
+    ```
+    docker build -t app.test:1.3 .
+    ```
 
-5. **Deploy the Docker Images:**   
-   - The Docker images need to be deployed on a development server. This server pulls images from the private repository, including the JavaScript application image and the MongoDB image.   
+7. ** Pushed the docker images to a private repository in AWS: **   
+    * After build and configurate the image will be push to a private repository. *
+    ```
+    docker push 12345678910.dkr.ecr.us-west-1.amazonaws.com/app.test:1.3
+    ```
+      
 
-6. **Run the Containers:**  
-   - There will be two containers running on the development server—one for the private container and one for the public development container. These containers communicate with each other to run the application.  
+8. ** Run the Containers:**  
+    * There will be two containers running on the development server—one for the private container and one for the public development container. These containers communicate 
+      with each other to run the application.  *
 
-## Running the application
+9. ** Running the application with docker-compose and a yaml file: **
+    * There will be an image running for the private repository and two images running from a public one. These images communicate with each other to run the application. *
+   
+    * Start compose: *
+    ```
+    docker-compose -f mongo.yaml up
+    ```
+    * Stop compose: *
+    ```
+    docker-compose -f mongo.yaml down
+    ```
 
-### Configurate MongoDB
-```
-docker run -d \
-  -p 27017:27017 \
-  -e MONGO_INITDB_ROOT_USERNAME=admin \
-  -e MONGO_INITDB_ROOT_PASSWORD=password \
-  --net mongo-network \
-  --name mongodb \
-  mongo:4.4
-```
 
-### Configurate Mongo-Express
-```
-docker run -d \
-  -p 8081:8081 \
-  -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
-  -e ME_CONFIG_MONGODB_ADMINPASSWORD=password \
-  -e ME_CONFIG_MONGODB_SERVER=mongodb \
-  --net mongo-network \
-  --name mongo-express \
-  mongo-express
-  ```
-
-### Docker Compose
-
-# Create docker-network and Run Docker Compose
-```
-docker network create mongo-network
-```
-
-# Start compose
-```
-docker-compose -f mongo.yaml up
-```
-
-# Stop compose
-```
-docker-compose -f mongo.yaml down
-```
-
-### The application can also be run using the following command:
-```
-node server.js
-```
-The application will be available on port 3000.
 
 
