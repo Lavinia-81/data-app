@@ -69,7 +69,7 @@ This project demonstrates how to connect a JavaScript Front-End and a Nodejs ser
     docker push 12345678910.dkr.ecr.us-west-1.amazonaws.com/app.test:1.3
     ```
 
-8. ** Running the application with docker-compose and a yaml file **
+8. ** Running the application with docker-compose and a yaml file. **
     * There will be an image running for the private repository and two images running from a public one. Those images communicate with each other to run the application. *
    
     * Start compose: *
@@ -82,7 +82,7 @@ This project demonstrates how to connect a JavaScript Front-End and a Nodejs ser
     docker-compose -f mongo.yaml down
     ```
     
-9. ** Using Docker Volumes to persist data between container **
+9. ** Using Docker Volumes to persist data between container. **
     *To avoid losing data each time the application stops, use Docker volumes: *
     
     * Start volumes: *
