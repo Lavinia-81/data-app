@@ -68,9 +68,8 @@ Commit the JavaScript front-end and Node.js back-end to Git, then run:
 node server.js
 The application will be available on:
 http://localhost:3000
-🐳 Docker Setup
 
-
+## Docker Setup
 2️⃣ Pull MongoDB & Mongo Express Images
 docker pull mongo:4.4
 docker pull mongo-express
@@ -96,8 +95,8 @@ docker run -d \
   --net mongo-network \
   --name mongo-express \
   mongo-express
- Build Custom Docker Image
 
+## Build Custom Docker Image
 6️⃣ Dockerfile (Node.js Application)
 Example:
 dockerfile
@@ -110,18 +109,20 @@ CMD ["node", "server.js"]
 
 7️⃣ Build the Image
 docker build -t app.test:1.3 .
-Push Image to AWS ECR
+
+## Push Image to AWS ECR
 After configuring AWS CLI and logging in:
 docker push 12345678910.dkr.ecr.us-west-1.amazonaws.com/app.test:1.3
 Your application image is now stored in a private cloud repository.
-Run Application with Docker Compose
 
+## Run Application with Docker Compose
 8️⃣ Start Compose
 docker-compose -f mongo.yaml up
 
 9️⃣ Stop Compose
 docker-compose -f mongo.yaml down
-Persist Data with Docker Volumes
+
+## Persist Data with Docker Volumes
 To avoid losing data when containers stop:
 Start with volumes:
 docker-compose -f docker-compose.yaml up
@@ -131,10 +132,10 @@ docker-compose -f docker-compose.yaml down
 
 🔄 CI/CD Pipeline (Jenkins)
 The project includes a Jenkins pipeline that:
-builds the Docker image
-tags it
-pushes it to AWS ECR
-deploys the updated container
+- builds the Docker image
+- tags it
+- pushes it to AWS ECR
+- deploys the updated container
 This demonstrates a full CI/CD workflow used in modern DevOps environments.
 ```
 
@@ -148,7 +149,6 @@ This application was created as my final DevOps course project, showcasing:
 - CI/CD automation
 - front-end + back-end integration
 - database management in Docker
-
 It represents a complete DevOps pipeline and is included in my portfolio as proof of hands‑on experience with real DevOps tools and workflows.
 
 ---
