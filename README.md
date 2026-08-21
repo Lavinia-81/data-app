@@ -149,6 +149,7 @@ This application was created as my final DevOps course project, showcasing:
 - CI/CD automation
 - front-end + back-end integration
 - database management in Docker
+
 It represents a complete DevOps pipeline and is included in my portfolio as proof of hands‑on experience with real DevOps tools and workflows.
 
 ---
